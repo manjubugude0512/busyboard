@@ -1,5 +1,6 @@
 package com.gearhead.busyboard.company.entity;
 
+import com.gearhead.busyboard.audit.entity.BaseEntity;
 import com.gearhead.busyboard.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
+
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="Company")
-public class Company {
+public class Company extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,8 +29,7 @@ public class Company {
     @Column(name="subscription_plan")
     private String subscriptionPlan;
 
-    @Column(name ="created_at")
-    private Instant createdAt;
+
 
     public void setId(int id) {
         this.id = id;
@@ -41,11 +41,10 @@ public class Company {
 
     public void setSubscriptionPlan(String subscriptionPlan) {
         this.subscriptionPlan = subscriptionPlan;
+
     }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
+
 
     public void setUsers(List<User> users) {
         this.users = users;
@@ -63,9 +62,7 @@ public class Company {
         return subscriptionPlan;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
+
 
     public List<User> getUsers() {
         return users;

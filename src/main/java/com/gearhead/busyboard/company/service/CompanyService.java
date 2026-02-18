@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -28,8 +27,6 @@ public class CompanyService {
     public CompanyResponseDTO createCompany(CompanyRequestDTO requestDTO) {
 
         Company company = mapper.toEntity(requestDTO);
-        company.setCreatedAt(Instant.now());
-
         Company saved = companyRepository.save(company);
         return mapper.toResponseDTO(saved);
     }
